@@ -1,7 +1,7 @@
 import React from 'react'
 import './Map.css'
 import MapStyle from './MapStyle';
-import { useEffect} from "react";
+import { useEffect,useState} from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"; 
 function Map() {
 
@@ -35,35 +35,41 @@ function Map() {
     top: '10px',  
     right: '10px',
   };
-  
+  // const [markerPosition, setMarkerPosition] = useState({
+  //   lat: position.lat,
+  //   lng: position.lng,
+  // });
+
+  // useEffect(() => {
+  //   const savedMarkerPosition = JSON.parse(localStorage.getItem('markerPosition'))
+  //   if(savedMarkerPosition){
+  //     setMarkerPosition(savedMarkerPosition)
+  //   }
+  // },[])
   return (
     <>
       <GoogleMap 
-      // onClick={(event)=>{
-      //   console.log(event);
-      // }} 
       zoom={18} 
       center={position} 
       mapContainerStyle={mapContainerStyle} 
       options={optionsMap} 
       mapContainerClassName="map-container"
-      className="flex items-center relative justify-center">
+      // onLoad={(map) => (mapIntance = map)}
+      >
         {/* <Marker position={position} style={markerStyle} icon={{
           url: '/marker.png',
           scaledSize: new window.google.maps.Size(60,80),
           origin: new window.google.maps.Point(0,0),
           anchor: new window.google.maps.Point(15,15)
         }}/> */}
-        <div className='relative flex justify-center items-center h-full'>
         <img 
         src="marker.png" 
         alt="" 
         style={{
           background: 'url("/marker.png") center center / cover no-repeat',
         }}
-        className='absolute w-[40px] h-[60px]'
+        className='absolute w-[40px] h-[60px] top-[50%] left-[50%] -traslate-x-[50%] -traslate-y-[50%]'
         />
-        </div>
       </GoogleMap>
       <h1 className='font-semibold text-2xl'>Location : </h1>
     </>
