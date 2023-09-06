@@ -1,9 +1,9 @@
 import "./App.css";
-import Map from "./components/Map";
+import Map from './components/Map'
 function App() {
   return (
   <>
-  <Map />
+  <div className="w-screen h-screen"><Map /></div>
   </>
   );
 }
